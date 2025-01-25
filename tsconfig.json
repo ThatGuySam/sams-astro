@@ -1,15 +1,16 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "moduleResolution": "nodenext",
-    "strictNullChecks": true,
-    "allowJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "src/*"
-      ]
-    },
-    "jsx": "preserve"
-  }
+    "extends": "astro/tsconfigs/base",
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strictNullChecks": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "src/*"
+            ]
+        },
+        "jsx": "preserve"
+    }
 }
