@@ -1,9 +1,9 @@
 ---
-import Layout from '~/layouts/PageLayout.astro'
+import CallToAction from '~/components/widgets/CallToAction.astro'
 
 import Header from '~/components/widgets/Header.astro'
 import Hero2 from '~/components/widgets/Hero2.astro'
-import CallToAction from '~/components/widgets/CallToAction.astro'
+import Layout from '~/layouts/PageLayout.astro'
 
 const meta = {
   title: 'Mobile App Landing Page',
@@ -35,7 +35,7 @@ const meta = {
   <Hero2
     callToAction={{ text: 'Get template', href: 'https://github.com/ThatGuySam/sams-astro', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import( '~/assets/images/hero.png' ), alt: 'Sam\'s Astro Hero Image' }}
+    image={{ src: import('~/assets/images/hero.png'), alt: 'Sam\'s Astro Hero Image' }}
   >
     <Fragment slot="title">
       Free template for <span class="hidden lg:inline">create your website <br />with</span>

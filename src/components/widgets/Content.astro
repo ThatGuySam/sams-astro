@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon'
 import { Picture } from '@astrojs/image/components'
+import { Icon } from 'astro-icon'
 
 interface Item {
   title: string
@@ -20,21 +20,21 @@ export interface Props {
 }
 
 const {
-  title = await Astro.slots.render( 'title' ),
-  subtitle = await Astro.slots.render( 'subtitle' ),
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
   highlight,
-  content = await Astro.slots.render( 'content' ),
+  content = await Astro.slots.render('content'),
   items = [],
-  image = await Astro.slots.render( 'image' ),
+  image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
 } = Astro.props;
 ---
 
-<section class:list={[ { 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20' ]}>
+<section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}>
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     {
-      ( title || subtitle || highlight ) && (
+      (title || subtitle || highlight) && (
         <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
           {highlight && (
             <p
@@ -57,14 +57,14 @@ const {
     }
   </div>
   <div class="mx-auto max-w-7xl p-4 md:px-8">
-    <div class={`md:flex ${ isReversed ? 'md:flex-row-reverse' : '' } md:gap-16`}>
+    <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2 self-center">
         {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
 
         {
           items && (
             <div class="space-y-8">
-              {items.map( ( { title: title2, description, icon } ) => (
+              {items.map(({ title: title2, description, icon }) => (
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-gray-50">
@@ -76,7 +76,7 @@ const {
                     {description && <p class="mt-2 text-muted dark:text-slate-400" set:html={description} />}
                   </div>
                 </div>
-              ) )}
+              ))}
             </div>
           )
         }
@@ -94,7 +94,7 @@ const {
                   class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
                   width={500}
                   height={500}
-                  widths={[ 400, 768 ]}
+                  widths={[400, 768]}
                   sizes="(max-width: 768px) 100vw, 432px"
                   aspectRatio="500:500"
                   {...image}

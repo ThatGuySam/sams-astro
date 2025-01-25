@@ -9,100 +9,100 @@ const UUID_NAMESPACE = '1a3cbda5-7c19-408d-ac04-9d0559a6cc28'
 
 let storage: ReturnType<typeof createStorage>
 
-export async function getStorage () {
-    if ( storage ) {
-        return storage
-    }
+export async function getStorage() {
+  if (storage) {
+    return storage
+  }
 
-    const {
-        default: localStorageDriver,
-    } = await import( 'unstorage/drivers/localstorage' )
+  const {
+    default: localStorageDriver,
+  } = await import('unstorage/drivers/localstorage')
 
-    const defaultStorage = createStorage( {
-        // @ts-expect-error: Error from inline import
-        driver: localStorageDriver( {
-            base: queriesBase,
-        } ),
-    } )
+  const defaultStorage = createStorage({
+    // @ts-expect-error: Error from inline import
+    driver: localStorageDriver({
+      base: queriesBase,
+    }),
+  })
 
-    storage = defaultStorage
+  storage = defaultStorage
 
-    return defaultStorage
+  return defaultStorage
 }
 
 export interface StoredQuery {
-    text: string
-    date: number
+  text: string
+  date: number
 }
 
 export interface StoredQueryOptions extends Partial<StoredQuery> {
-    text: string
+  text: string
 }
 
-function derriveUUIDFromQuery ( query: string ) {
-    const queryPartsJSON = JSON.stringify( parseQuery( query ) )
+function derriveUUIDFromQuery(query: string) {
+  const queryPartsJSON = JSON.stringify(parseQuery(query))
 
-    return uuidv5( queryPartsJSON, UUID_NAMESPACE )
+  return uuidv5(queryPartsJSON, UUID_NAMESPACE)
 }
 
-export async function getQueryKeys (): Promise<Array<string>> {
-    const storage = await getStorage()
+export async function getQueryKeys(): Promise<Array<string>> {
+  const storage = await getStorage()
 
-    const queryKeys = await storage.getKeys( queriesBase )
+  const queryKeys = await storage.getKeys(queriesBase)
 
-    return queryKeys
+  return queryKeys
 }
 
-export async function getQueries (): Promise<StoredQuery[]> {
-    const storage = await getStorage()
+export async function getQueries(): Promise<StoredQuery[]> {
+  const storage = await getStorage()
 
-    const queryKeys = await getQueryKeys()
+  const queryKeys = await getQueryKeys()
 
-    const unsortedQueries = await Promise.all( queryKeys.map( ( key ) => {
-        // We have to omit the base key from the key name
-        // since we're already on Query storage
-        const queryUUID = key.replace( `${ queriesBase }:`, '' )
+  const unsortedQueries = await Promise.all(queryKeys.map((key) => {
+    // We have to omit the base key from the key name
+    // since we're already on Query storage
+    const queryUUID = key.replace(`${queriesBase}:`, '')
 
-        return storage.getItem( queryUUID ) as Promise<StoredQuery>
-    } ) )
+    return storage.getItem(queryUUID) as Promise<StoredQuery>
+  }))
 
-    const queries = unsortedQueries
-        // Sort by date
-        .sort( ( a, b ) => {
-            if ( a.date > b.date ) {
-                return -1
-            }
-            if ( a.date < b.date ) {
-                return 1
-            }
-            return 0
-        } )
+  const queries = unsortedQueries
+  // Sort by date
+    .sort((a, b) => {
+      if (a.date > b.date) {
+        return -1
+      }
+      if (a.date < b.date) {
+        return 1
+      }
+      return 0
+    })
 
-    return queries
+  return queries
 }
 
-export async function storeQuery ( query: StoredQueryOptions ): Promise<StoredQuery> {
-    const storage = await getStorage()
+export async function storeQuery(query: StoredQueryOptions): Promise<StoredQuery> {
+  const storage = await getStorage()
 
-    // Set the date to now if it's not set
-    const storedQuery: StoredQuery = {
-        ...query,
-        date: query.date || Date.now(),
-    }
+  // Set the date to now if it's not set
+  const storedQuery: StoredQuery = {
+    ...query,
+    date: query.date || Date.now(),
+  }
 
-    const key = derriveUUIDFromQuery( storedQuery.text )
+  const key = derriveUUIDFromQuery(storedQuery.text)
 
-    await storage.setItem( key, storedQuery )
+  await storage.setItem(key, storedQuery)
 
-    return storedQuery
+  return storedQuery
 }
 
-export async function watchQueries (
-    callback: ( event: string ) => void,
+export async function watchQueries(
+  callback: (event: string) => void,
 ): Promise<ReturnType<typeof storage.watch>> {
-    const storage = await getStorage()
+  const storage = await getStorage()
 
-    // console.log( { callback } )
+  // console.log( { callback } )
 
-    return await storage.watch( callback )
+  return await storage.watch(callback)
 }

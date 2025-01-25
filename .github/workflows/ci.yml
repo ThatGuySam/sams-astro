@@ -22,8 +22,8 @@ jobs:
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
-          cache: 'pnpm'
+          node-version: 16.x
+          cache: pnpm
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
@@ -35,4 +35,4 @@ jobs:
         run: pnpm exec tsc --noEmit
 
       - name: 🏗️ Build Astro
-        run: pnpm run build 
+        run: pnpm run build

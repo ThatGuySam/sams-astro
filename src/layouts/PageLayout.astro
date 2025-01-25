@@ -1,10 +1,10 @@
 ---
-import Layout from '~/layouts/BaseLayout.astro'
+import type { MetaSEO } from '~/types'
 import Header from '~/components/widgets/Header.astro'
 
 import { headerData } from '~/data'
 
-import type { MetaSEO } from '~/types'
+import Layout from '~/layouts/BaseLayout.astro'
 
 export interface Props {
   meta?: MetaSEO
@@ -19,9 +19,9 @@ const { meta } = Astro.props;
   </slot> -->
   <slot name="header">
     <Header
-        {...headerData}
-        isSticky
-        showToggleTheme
+      {...headerData}
+      isSticky
+      showToggleTheme
     />
   </slot>
   <main>

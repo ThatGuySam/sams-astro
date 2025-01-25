@@ -22,10 +22,10 @@ export interface Props {
 }
 
 const {
-  title = await Astro.slots.render( 'title' ),
-  subtitle = await Astro.slots.render( 'subtitle' ),
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
   highlight,
-  callToAction = await Astro.slots.render( 'callToAction' ),
+  callToAction = await Astro.slots.render('callToAction'),
   items = [],
 } = Astro.props;
 ---
@@ -56,8 +56,8 @@ const {
                       )
                     : (
                         callToAction
-                    && callToAction.text
-                    && callToAction.href && (
+                        && callToAction.text
+                        && callToAction.href && (
                       <a class="btn btn-primary mb-4 sm:mb-0" href={callToAction.href} target="_blank" rel="noopener">
                         {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />}
                         {callToAction.text}
@@ -71,8 +71,8 @@ const {
           <div class="w-full lg:w-1/2 px-0 sm:px-8">
             <ul class="space-y-10">
               {
-                ( items && items.length )
-                  ? items.map( ( { title: title2, description, icon }, index ) => (
+                (items && items.length)
+                  ? items.map(({ title: title2, description, icon }, index) => (
                       <li class="flex md:-mx-4">
                         <div class="pr-4 sm:pl-4">
                           <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-blue-100 text-primary">
@@ -84,7 +84,7 @@ const {
                           <p class="text-muted dark:text-gray-400" set:html={description} />
                         </div>
                       </li>
-                  ) )
+                  ))
                   : ''
               }
             </ul>

@@ -186,7 +186,7 @@ const CONFIG = {
       disabled: false,
     },
   },
-};
+}
 ```
 
 <br>
