@@ -83,7 +83,7 @@ export const footerData = {
                 { text: 'Partners', href: '#' },
                 { text: 'Atom', href: '#' },
                 { text: 'Electron', href: '#' },
-                { text: 'Paste Resume Desktop', href: '#' },
+                { text: 'Sam\'s Astro Desktop', href: '#' },
             ],
         },
         {

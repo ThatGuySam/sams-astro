@@ -43,12 +43,6 @@ An opinionated Astro starter template with Vue and Tailwind CSS.
 
 <br>
 
-## Demo
-
-📌 [https://pasteresume.com/](https://pasteresume.com/)
-
-<br>
-
 ## Getting started
 
 **Sam's Astro** is an opinionated template that gives you quick access to creating a website using [Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focused on simplicity, good practices and high performance.
@@ -110,7 +104,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit Paste Resume on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main)
+[![Edit Sam's Astro on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Update `config.mjs` and contents. Have fun!
 
@@ -248,4 +242,4 @@ Initially created by [onWidget](https://onwidget.com) and maintained by a commun
 
 ## License
 
-**Paste Resume** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.
+**Sam's Astro** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.

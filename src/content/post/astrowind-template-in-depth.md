@@ -1,6 +1,6 @@
 ---
 publishDate: 2023-01-08T00:00:00Z
-title: Paste Resume template in depth
+title: Sam's Astro template in depth
 description: Lorem ipsum dolor sit amet
 excerpt: Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas
 image: ~/assets/images/stickers.jpg
@@ -9,7 +9,7 @@ tags:
   - astro
   - tailwind css
   - front-end
-canonical: https://pasteresume.com/astrowind-template-in-depth
+canonical: https://github.com/ThatGuySam/sams-astro/blob/main/docs/in-depth.md
 ---
 
 ## Dictum integer fusce ac ridiculus et odio sollicitudin diam at

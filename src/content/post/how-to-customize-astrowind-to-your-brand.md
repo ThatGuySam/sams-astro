@@ -1,13 +1,13 @@
 ---
 publishDate: 2023-01-06T00:00:00Z
-title: How to customize Paste Resume template to suit your branding
+title: How to customize Sam's Astro template to suit your branding
 excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur.
 image: ~/assets/images/colors.jpg
 tags:
   - astro
   - tailwind css
   - theme
-canonical: https://pasteresume.com/how-to-customize-astrowind-to-your-brand
+canonical: https://github.com/ThatGuySam/sams-astro/blob/main/docs/how-to-customize.md
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr
