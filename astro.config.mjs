@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url'
 
 // import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx'
-import partytown from '@astrojs/partytown'
 import tailwind from '@astrojs/tailwind'
 import vue from '@astrojs/vue'
 import compress from 'astro-compress'
@@ -13,10 +12,6 @@ import { SITE } from './src/config.mjs'
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs'
 
 const __vitedirname = path.dirname(fileURLToPath(import.meta.url))
-
-function whenExternalScripts(items = []) {
-  return SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map(item => item()) : [items()]) : []
-}
 
 export default defineConfig({
   site: SITE.origin,
@@ -38,24 +33,7 @@ export default defineConfig({
     // sitemap(),
     mdx(),
     vue(),
-
-    ...whenExternalScripts(() =>
-      partytown({
-        config: { forward: ['dataLayer.push'] },
-      }),
-    ),
-
-    compress({
-      css: true,
-      html: {
-        removeAttributeQuotes: false,
-      },
-      img: false,
-      js: true,
-      svg: false,
-
-      logger: 1,
-    }),
+    compress(),
   ],
 
   vite: {

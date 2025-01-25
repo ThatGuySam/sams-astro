@@ -19,7 +19,6 @@ export async function getStorage() {
   } = await import('unstorage/drivers/localstorage')
 
   const defaultStorage = createStorage({
-    // @ts-expect-error: Error from inline import
     driver: localStorageDriver({
       base: queriesBase,
     }),

@@ -1,40 +1,54 @@
-const load = async function () {
-  // let images: Record<string, () => Promise<unknown>> | undefined
+import type { ImageMetadata } from 'astro';
+
+type ImageEntry = () => Promise<{ default: ImageMetadata }>;
+type ImageGlobResult = Record<string, ImageEntry>;
+
+/** Load images from a directory */
+async function loadImages(): Promise<ImageGlobResult | undefined> {
+  let images: ImageGlobResult | undefined;
   try {
-    return import.meta.glob('~/assets/images/**')
+    images = import.meta.glob<{ default: ImageMetadata }>('~/assets/images/**/*.{jpeg,jpg,png,gif}');
+  } catch (e) {
+    // Do nothing if images cannot be loaded
   }
-  catch {
-    // continue regardless of error
-    return undefined
-  }
-  // return images
+  return images;
 }
 
-let _images
+let _images: ImageGlobResult | undefined;
 
-/** */
-export async function fetchLocalImages() {
-  _images = _images || load()
-  return await _images
+/** Get all images from ~/assets/images/ */
+export async function getImages() {
+  _images = _images || await loadImages();
+  return _images;
 }
 
-/** */
-export async function findImage(imagePath?: string) {
-  if (typeof imagePath !== 'string') {
-    return null
+/** Get image data from ~/assets/images/ */
+export async function getImage(imagePath: string) {
+  if (!imagePath) {
+    return null;
   }
 
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath
+  if (typeof _images === 'undefined') {
+    _images = await loadImages();
   }
 
-  if (!imagePath.startsWith('~/assets')) {
-    return null
+  if (!_images || !_images[imagePath]) {
+    return null;
   }
+
+  const image = await _images[imagePath]();
+  return image.default;
+}
+
+/** Get image data from ~/assets/images/ */
+export async function findImage(imagePath: string) {
+  if (!imagePath) {
+    return undefined;
+  }
+
   // For now only consume images using ~/assets alias (or absolute)
+  const images = await getImages();
+  const key = imagePath.replace('~/', '/src/');
 
-  const images = await fetchLocalImages()
-  const key = imagePath.replace('~/', '/src/')
-
-  return typeof images[key] === 'function' ? (await images[key]()).default : null
+  return images?.[key] ? (await images[key]()).default : undefined;
 }

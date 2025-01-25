@@ -1,6 +1,5 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-/// <reference types="@astrojs/image/client" />
 
 declare module 'astro:assets' {
   interface ImageMetadata {
@@ -9,4 +8,18 @@ declare module 'astro:assets' {
     height: number
     format: string
   }
+}
+
+declare module 'astro-icon' {
+  interface Props {
+    name: string
+    pack?: string
+    title?: string
+    class?: string
+    optimize?: boolean
+    [key: string]: any
+  }
+
+  const Icon: (props: Props) => any
+  export { Icon }
 }

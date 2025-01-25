@@ -3,7 +3,12 @@ import type { MetaSEO } from '~/types'
 
 import Layout from '~/layouts/PageLayout.astro'
 
-export interface Props {}
+export interface Props {
+  frontmatter: {
+    title: string;
+    [key: string]: any;
+  };
+}
 
 const { frontmatter } = Astro.props
 
