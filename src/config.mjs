@@ -1,15 +1,15 @@
 import defaultImage from './assets/images/default.png'
 
 const CONFIG = {
-    name: 'Paste Resume',
+    name: 'Sam\'s Astro',
 
-    origin: 'https://pasteresume.com',
+    origin: 'https://github.com/ThatGuySam/sams-astro',
     basePathname: '/',
     trailingSlash: false,
 
-    title: 'Paste Resume — Get jobs to come to you',
+    title: 'Sam\'s Astro — Opinionated Astro Starter',
     description:
-    '🚀 Search and apply to jobs in bulk by searching company HR Site postings directly. ',
+    '🚀 Sam\'s opinionated Astro starter template with Vue and Tailwind CSS',
     defaultImage,
 
     defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
