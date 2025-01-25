@@ -22,6 +22,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/vue": "^5.0.6",
+    "@fontsource-variable/inter": "^5.1.1",
     "@tailwindcss/forms": "^0.5.10",
     "chrono-node": "^2.7.8",
     "unstorage": "^1.14.4",
