@@ -1,5 +1,6 @@
 {
     "name": "sams-astro",
+    "type": "module",
     "version": "1.0.0",
     "private": false,
     "description": "Sam's opinionated Astro starter template with Vue and Tailwind CSS.",
