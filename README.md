@@ -1,6 +1,6 @@
-# 👨‍💻 Paste Resume
+# 👨‍💻 Sam's Astro
 
-
+An opinionated Astro starter template with Vue and Tailwind CSS.
 
 ## Features
 
@@ -51,13 +51,13 @@
 
 ## Getting started
 
-**Paste Resume** tries to give you quick access to creating a website using [Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
+**Sam's Astro** is an opinionated template that gives you quick access to creating a website using [Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focused on simplicity, good practices and high performance.
 
-Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals..
+Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
 
 ### Project structure
 
-Inside Paste Resume template, you'll see the following folders and files:
+Inside Sam's Astro template, you'll see the following folders and files:
 
 ```
 /
