@@ -60,9 +60,6 @@ importers:
       '@astrolib/seo':
         specifier: 1.0.0-beta.8
         version: 1.0.0-beta.8(astro@5.1.9(@types/node@22.10.10)(jiti@1.21.7)(lightningcss@1.28.2)(rollup@4.32.0)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0))
-      '@fontsource/inter':
-        specifier: ^5.1.1
-        version: 5.1.1
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17)
@@ -651,9 +648,6 @@ packages:
 
   '@fontsource-variable/inter@5.1.1':
     resolution: {integrity: sha512-OpXFTmiH6tHkYijMvQTycFKBLK4X+SRV6tet1m4YOUH7SzIIlMqDja+ocDtiCA72UthBH/vF+3ZtlMr2rN/wIw==}
-
-  '@fontsource/inter@5.1.1':
-    resolution: {integrity: sha512-weN3E+rq0Xb3Z93VHJ+Rc7WOQX9ETJPTAJ+gDcaMHtjft67L58sfS65rAjC5tZUXQ2FdZ/V1/sSzCwZ6v05kJw==}
 
   '@gustavnikolaj/async-main-wrap@3.0.1':
     resolution: {integrity: sha512-FHh1Tz5Jk5xJphcYpFUMsxCTO+XbgQyCorlbztqBsYRnu5hmuoV/0Q+dJlcOtQCG6cJ5/EHX+VrSsoLBoaTJvQ==}
@@ -6401,8 +6395,6 @@ snapshots:
       levn: 0.4.1
 
   '@fontsource-variable/inter@5.1.1': {}
-
-  '@fontsource/inter@5.1.1': {}
 
   '@gustavnikolaj/async-main-wrap@3.0.1': {}
 
