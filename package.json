@@ -15,7 +15,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "eslint . --fix",
-    "lint:eslint": "eslint .",
+    "lint": "eslint .",
     "typecheck": "astro check",
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
