@@ -16,6 +16,7 @@
         "astro": "astro",
         "format": "eslint . --ext .js,.ts,.astro --fix",
         "lint:eslint": "eslint . --ext .js,.ts,.astro",
+        "typecheck": "tsc --noEmit",
         "subfont": "subfont -ir --no-fallbacks --silent --root dist"
     },
     "dependencies": {
