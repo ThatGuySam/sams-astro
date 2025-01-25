@@ -1,6 +1,5 @@
 ---
 import type { MetaSEO } from '~/types'
-import { getImage } from '@astrojs/image'
 import { GoogleAnalytics } from '@astrolib/analytics'
 
 import { AstroSeo } from '@astrolib/seo'
@@ -15,16 +14,7 @@ export interface Props extends MetaSEO {
   dontUseTitleTemplate?: boolean
 }
 
-const defaultImage = SITE.defaultImage
-  ? (
-      await getImage({
-        src: SITE.defaultImage,
-        alt: 'Default image',
-        width: 1200,
-        height: 628,
-      })
-    ).src
-  : ''
+const defaultImage = SITE.defaultImage || ''
 
 const {
   title = SITE.name,
@@ -41,14 +31,11 @@ const {
   dontUseTitleTemplate = false,
 } = Astro.props
 
-const image
-  = typeof _image === 'string'
-    ? new URL(_image, Astro.site)
-    // @ts-expect-error
-    : (_image && typeof _image.src !== 'undefined')
-      // @ts-expect-error
-      ? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-      : null;
+const image = typeof _image === 'string'
+  ? new URL(_image, Astro.site)
+  : (_image && 'src' in _image)
+    ? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+    : null;
 ---
 
 <meta charset="UTF-8" />
@@ -86,12 +73,24 @@ const image
 <CustomStyles />
 
 <!-- Google Site Verification -->
-{SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+{SITE.googleSiteVerificationId && (
+  <meta 
+    name="google-site-verification" 
+    content={String(SITE.googleSiteVerificationId)} 
+  />
+)}
 
 <!-- Google Analytics -->
-{SITE.googleAnalyticsId && <GoogleAnalytics id={String(SITE.googleAnalyticsId)} partytown={true} />}
+{SITE.googleAnalyticsId && (
+  <GoogleAnalytics 
+    id={String(SITE.googleAnalyticsId)} 
+    partytown={true} 
+  />
+)}
 
-{SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
+{SITE.splitbeeAnalytics?.enabled && (
+  <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />
+)}
 
 <link rel="shortcut icon" href={getAsset('/favicon.ico')} />
 <link rel="icon" type="image/svg+xml" href={getAsset('/favicon.svg')} />

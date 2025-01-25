@@ -24,8 +24,12 @@ const CONFIG = {
     timeZone: 'UTC',
   }),
 
-  googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-  googleSiteVerificationId: false,
+  googleAnalyticsId: '', // or "G-XXXXXXXXXX",
+  googleSiteVerificationId: '',
+
+  splitbeeAnalytics: {
+    enabled: false,
+  },
 
   blog: {
     disabled: false,
